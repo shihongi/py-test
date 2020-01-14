@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+
+
 
 fp = open('/data/iris.csv','r')
 
@@ -9,5 +14,6 @@ for line in fp:
   
 
 ds.sort()
-print(ds)
 
+print(ds)
+print('データの前半と後半が表示される')
