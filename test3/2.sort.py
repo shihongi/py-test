@@ -7,6 +7,7 @@ for line in fp:
   data=line.strip().split(',')
   ds.append(data)
   
+
 ds.sort()
 print(ds)
 
