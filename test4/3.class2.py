@@ -6,9 +6,9 @@ import random
 class Yamahuda():
   SUITS=('S','H','D','C')
   NUMBER=range(1,14)
-  deck=[]
 
   def __init__(self):
+    self.deck=[]
     for s in self.SUITS:
       for n in self.NUMBER:
         card=[s,n]

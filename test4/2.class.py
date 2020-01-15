@@ -4,11 +4,13 @@ import random
 
 
 class Yamahuda():
+  # class hensu-
   SUITS=('S','H','D','C')
   NUMBER=range(1,14)
-  deck=[]
 
   def __init__(self):
+    # instance hensu-
+    self.deck=[]
     for s in self.SUITS:
       for n in self.NUMBER:
         card=[s,n]
@@ -32,15 +34,16 @@ class Yamahuda():
       
 
 
-deck=Yamahuda()
+deck1=Yamahuda()
+deck2=Yamahuda()
 
-deck.dump()
+deck2.shuffle()
 
-deck.shuffle()
-deck.dump()
+deck1.dump()
+deck2.dump()
 
-card=deck.get1card()
-deck.dump()
+card=deck1.get1card()
+deck1.dump()
 print('hiita card=',card)
 
 
