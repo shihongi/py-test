@@ -7,13 +7,12 @@ class Yamahuda():
   # class hensu-
   SUITS=('S','H','D','C')
   NUMBER=range(1,14)
-  deck=[]
 
   def __init__(self):
     # instance hensu-
-    for s in self.SUITS:
-      for n in self.NUMBER:
-        #self.deck=[]
+    self.deck=[]
+    for s in SUITS:
+      for n in NUMBER:
         card=[s,n]
         self.deck.append(card)
 
