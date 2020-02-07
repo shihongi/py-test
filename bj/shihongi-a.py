@@ -35,12 +35,33 @@ class Tehuda():
     self.mycards.append(card)
 
   def goukei(self):
-    tmp=0
+    ts=[]
     for card in self.mycards:
-      if card[1]>10:
-        tmp+=10
+      if card[1]==1:
+        ts.append(0) # A
       else:
-        tmp+=card[1]
+        ts.append(card[1]) # 2345..JQK
+
+    while 1:
+      tmp=0
+      for number in ts:
+        if number==0: # A
+          tmp+=11
+        elif number>10:
+          tmp+=10
+        else:
+          tmp+=number
+
+      if tmp<=21:
+        return tmp
+
+      if not 0 in ts:
+        return tmp
+
+      for i in range(0,len(ts)):
+        if ts[i]==0:
+          ts[i]=1
+          break
     return tmp
 
   def status(self):
@@ -65,21 +86,13 @@ dealer=Tehuda()
 you=Tehuda()
 
 # ====You and Dealer draw 1 card ====
-you.setCard(deck.get1card())
-print("Your card is ",you.status())
-
-dealer.setCard(deck.get1card())
-print("Dealer's card is ",dealer.status())
-
-# ====Your draw turn ====
-print("Do you draw a card ?(y/n)")
-while input()=='y':
-  you.setCard(deck.get1card())
-  print("your card is ",you.status())
-
-# ====Dealer draw turn ====
-# todo
-
-# ==== judge win or lose ===
-# todo
-
+you.setCard(['S',1]) # 11
+print("your card is ",you.status()) # 11
+you.setCard(['D',1]) # 11+11=22 , 11 + 1 = 12
+print("your card is ",you.status()) # 12
+you.setCard(['S',8]) # 11+1+8 =20
+print("your card is ",you.status()) # 20
+you.setCard(['D',2]) # 11+1+8+2 =22 , 1+1+8+2=12
+print("your card is ",you.status()) # 12
+you.setCard(['S',1]) # 13
+print("Your card is ",you.status()) # 13
