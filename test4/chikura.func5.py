@@ -35,19 +35,36 @@ class Tehuda():
         self.mycards.append(card)
 
     def goukei(self):
-        tmp=0
+        ts=[] #引いたカードを計算用に格納するリストtsを作成
         for card in self.mycards:
             if card[1]==1:
-                if tmp<=10:
-                    tmp+=11
-                else:
-                    tmp+=1
+                ts.append(0) #引いたカードがA
             else:
-                if card[1]>10:
+                ts.append(card[1]) #A以外を引く
+
+        while 1:
+            tmp=0
+            for number in ts:
+                if number==0: #Aを引く
+                    tmp+=11
+                elif number>10: #10,J,Q,K
                     tmp+=10
                 else:
-                    tmp+=card[1]
+                    tmp+=number
+            
+            if tmp<=21:
+                return tmp
+
+            if not 0 in ts:
+                return tmp
+
+            for i in range(0,len(ts)): #Aが手札にある場合、計算を終わらせるための処理を行う
+                if ts[i]==0:
+                    ts[i]=1
+                    break
+
         return tmp
+
 
     def status(self):
         msg=''
